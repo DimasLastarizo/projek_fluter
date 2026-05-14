@@ -109,8 +109,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: TextStyle(
                                 color: AppTheme.warmCream,
                                 fontSize: 26,
-                                fontWeight: FontWeight.w800,
-                                letterSpacing: -0.8,
+                                fontWeight: FontWeight.w900,
+                                letterSpacing: 0,
                               ),
                             ),
                             const SizedBox(height: 2),
@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: AppTheme.textMuted,
                                 fontSize: 11,
                                 fontWeight: FontWeight.w400,
-                                fontStyle: FontStyle.italic,
+                                letterSpacing: 0.4,
                               ),
                             ),
                           ],
@@ -131,9 +131,19 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: 44,
                             height: 44,
                             decoration: BoxDecoration(
-                              color: AppTheme.cardDark,
-                              borderRadius: BorderRadius.circular(14),
-                              border: Border.all(color: AppTheme.divider),
+                              color: AppTheme.cardMedium,
+                              borderRadius:
+                                  BorderRadius.circular(AppTheme.controlRadius),
+                              border: Border.all(
+                                color: AppTheme.coolGrey.withValues(alpha: 0.35),
+                              ),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: AppTheme.shadow,
+                                  blurRadius: 10,
+                                  offset: Offset(0, 6),
+                                ),
+                              ],
                             ),
                             child: const Icon(
                               Icons.history_rounded,
@@ -184,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: AppTheme.warmCream,
                             fontSize: 18,
                             fontWeight: FontWeight.w700,
-                            letterSpacing: -0.3,
+                            letterSpacing: 0,
                           ),
                         ),
                         GestureDetector(
@@ -192,9 +202,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                             decoration: BoxDecoration(
-                              color: AppTheme.cardDark,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: AppTheme.divider),
+                              color: AppTheme.cardMedium,
+                              borderRadius:
+                                  BorderRadius.circular(AppTheme.controlRadius),
+                              border: Border.all(
+                                color: AppTheme.coolGrey.withValues(alpha: 0.35),
+                              ),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: AppTheme.shadow,
+                                  blurRadius: 8,
+                                  offset: Offset(0, 5),
+                                ),
+                              ],
                             ),
                             child: const Row(
                               children: [
@@ -289,31 +309,67 @@ class _ActionButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: color.withValues(alpha: 0.25), width: 1),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 28,
-              height: 28,
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(icon, color: Colors.white, size: 16),
+          gradient: const LinearGradient(
+            colors: [AppTheme.cardMedium, AppTheme.cardDark],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(AppTheme.controlRadius),
+          border: Border.all(color: color.withValues(alpha: 0.65), width: 1),
+          boxShadow: const [
+            BoxShadow(
+              color: AppTheme.shadow,
+              blurRadius: 12,
+              offset: Offset(0, 8),
             ),
-            const SizedBox(width: 8),
-            Text(
-              label,
-              style: TextStyle(
-                color: color,
-                fontWeight: FontWeight.w600,
-                fontSize: 13,
+          ],
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              left: 0,
+              top: 0,
+              bottom: 0,
+              width: 5,
+              child: DecoratedBox(decoration: BoxDecoration(color: color)),
+            ),
+            Positioned(
+              right: 10,
+              top: 9,
+              child: Container(
+                width: 28,
+                height: 2,
+                color: AppTheme.coolGrey.withValues(alpha: 0.55),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 30,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      color: color,
+                      borderRadius:
+                          BorderRadius.circular(AppTheme.controlRadius),
+                    ),
+                    child: Icon(icon, color: AppTheme.primaryNavy, size: 17),
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    label,
+                    style: TextStyle(
+                      color: color,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 13,
+                      letterSpacing: 0.4,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

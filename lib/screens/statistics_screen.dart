@@ -246,7 +246,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [AppTheme.primaryNavy, Color(0xFF13273A)],
+            colors: [AppTheme.primaryNavy, AppTheme.backgroundGradientEnd],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -275,7 +275,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                             color: AppTheme.warmCream,
                             fontSize: 28,
                             fontWeight: FontWeight.w800,
-                            letterSpacing: -0.8,
+                            letterSpacing: 0,
                           ),
                         ),
                         const SizedBox(height: 6),
@@ -425,7 +425,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                       label: 'Net result',
                                       value: _formatSignedCompact(metrics.net),
                                       color: metrics.net >= 0
-                                          ? AppTheme.accentEmerald
+                                          ? AppTheme.incomeGreen
                                           : AppTheme.expenseRed,
                                       icon: metrics.net >= 0
                                           ? Icons.trending_up_rounded
@@ -440,7 +440,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                 padding: const EdgeInsets.all(14),
                                 decoration: BoxDecoration(
                                   color: AppTheme.primaryNavy.withValues(alpha: 0.5),
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius:
+                                      BorderRadius.circular(AppTheme.controlRadius),
                                   border: Border.all(
                                     color: AppTheme.divider.withValues(alpha: 0.5),
                                   ),
@@ -539,17 +540,20 @@ class _StatsCard extends StatelessWidget {
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xFF1C3147), Color(0xFF18293C)],
+          colors: [AppTheme.cardGradientStart, AppTheme.cardDark],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(26),
-        border: Border.all(color: AppTheme.divider, width: 1),
+        borderRadius: BorderRadius.circular(AppTheme.panelRadius),
+        border: Border.all(
+          color: AppTheme.coolGrey.withValues(alpha: 0.35),
+          width: 1,
+        ),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.12),
+          const BoxShadow(
+            color: AppTheme.shadow,
             blurRadius: 14,
-            offset: const Offset(0, 6),
+            offset: Offset(0, 8),
           ),
         ],
       ),
@@ -573,7 +577,7 @@ class _LegendChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       decoration: BoxDecoration(
         color: AppTheme.primaryNavy.withValues(alpha: 0.55),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(AppTheme.controlRadius),
         border: Border.all(color: AppTheme.divider.withValues(alpha: 0.65)),
       ),
       child: Row(
@@ -690,7 +694,9 @@ class _MonthlyBarChart extends StatelessWidget {
                                             ? AppTheme.primaryNavy
                                                 .withValues(alpha: 0.45)
                                             : Colors.transparent,
-                                        borderRadius: BorderRadius.circular(14),
+                                        borderRadius: BorderRadius.circular(
+                                          AppTheme.controlRadius,
+                                        ),
                                         border: Border.all(
                                           color: isSelected
                                               ? AppTheme.accentEmerald
@@ -801,7 +807,7 @@ class _BarSegment extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         color: color.withValues(alpha: value <= 0 ? 0.15 : 0.95),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(AppTheme.controlRadius),
         boxShadow: value <= 0
             ? null
             : [
@@ -833,14 +839,14 @@ class _PeriodDropdown extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: AppTheme.primaryNavy.withValues(alpha: 0.55),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(AppTheme.controlRadius),
         border: Border.all(color: AppTheme.divider.withValues(alpha: 0.6)),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           value: value,
           dropdownColor: AppTheme.cardDark,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(AppTheme.controlRadius),
           icon: const Icon(
             Icons.keyboard_arrow_down_rounded,
             color: AppTheme.textMuted,
@@ -932,7 +938,7 @@ class _RingOverviewChart extends StatelessWidget {
                       : AppTheme.expenseRed,
                   fontSize: 22,
                   fontWeight: FontWeight.w800,
-                  letterSpacing: -0.5,
+                  letterSpacing: 0,
                 ),
               ),
             ],
@@ -1036,7 +1042,7 @@ class _MetricTile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
       decoration: BoxDecoration(
         color: AppTheme.primaryNavy.withValues(alpha: 0.55),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(AppTheme.controlRadius),
         border: Border.all(
           color: AppTheme.divider.withValues(alpha: 0.55),
         ),

@@ -114,9 +114,18 @@ class _InputScreenState extends State<InputScreen>
                   Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      color: AppTheme.cardDark,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppTheme.divider),
+                      color: AppTheme.cardMedium,
+                      borderRadius: BorderRadius.circular(AppTheme.controlRadius),
+                      border: Border.all(
+                        color: AppTheme.coolGrey.withValues(alpha: 0.35),
+                      ),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: AppTheme.shadow,
+                          blurRadius: 10,
+                          offset: Offset(0, 6),
+                        ),
+                      ],
                     ),
                     child: Row(
                       children: [
@@ -153,8 +162,15 @@ class _InputScreenState extends State<InputScreen>
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
                       color: activeColor.withValues(alpha: 0.08),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: activeColor.withValues(alpha: 0.25)),
+                      borderRadius: BorderRadius.circular(AppTheme.panelRadius),
+                      border: Border.all(color: activeColor.withValues(alpha: 0.5)),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: AppTheme.shadow,
+                          blurRadius: 14,
+                          offset: Offset(0, 8),
+                        ),
+                      ],
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -201,7 +217,7 @@ class _InputScreenState extends State<InputScreen>
                                   color: activeColor,
                                   fontSize: 32,
                                   fontWeight: FontWeight.w800,
-                                  letterSpacing: -1,
+                                  letterSpacing: 0,
                                 ),
                                 inputFormatters: [
                                   FilteringTextInputFormatter.digitsOnly,
@@ -215,7 +231,7 @@ class _InputScreenState extends State<InputScreen>
                                   filled: false,
                                   contentPadding: EdgeInsets.zero,
                                   hintStyle: TextStyle(
-                                    color: Color(0x448BA5BC),
+                                    color: AppTheme.inputHintGhost,
                                     fontSize: 32,
                                     fontWeight: FontWeight.w800,
                                   ),
@@ -281,9 +297,10 @@ class _InputScreenState extends State<InputScreen>
                               horizontal: 12, vertical: 7),
                           decoration: BoxDecoration(
                             color: activeColor.withValues(alpha: 0.08),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius:
+                                BorderRadius.circular(AppTheme.controlRadius),
                             border:
-                                Border.all(color: activeColor.withValues(alpha: 0.2)),
+                                Border.all(color: activeColor.withValues(alpha: 0.4)),
                           ),
                           child: Text(
                             tag,
@@ -367,7 +384,7 @@ class _TypeToggle extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
           color: isSelected ? activeColor.withValues(alpha: 0.15) : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(AppTheme.controlRadius),
           border: isSelected
               ? Border.all(color: activeColor.withValues(alpha: 0.4))
               : Border.all(color: Colors.transparent),

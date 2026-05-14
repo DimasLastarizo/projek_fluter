@@ -50,7 +50,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         return AlertDialog(
           backgroundColor: AppTheme.cardDark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(AppTheme.panelRadius),
           ),
           title: const Text(
             'Hapus transaksi?',
@@ -171,8 +171,19 @@ class _HistoryScreenState extends State<HistoryScreen> {
                               ),
                               decoration: BoxDecoration(
                                 color: AppTheme.cardDark,
-                                borderRadius: BorderRadius.circular(16),
-                                border: Border.all(color: AppTheme.divider),
+                                borderRadius:
+                                    BorderRadius.circular(AppTheme.controlRadius),
+                                border: Border.all(
+                                  color:
+                                      AppTheme.coolGrey.withValues(alpha: 0.35),
+                                ),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: AppTheme.shadow,
+                                    blurRadius: 8,
+                                    offset: Offset(0, 5),
+                                  ),
+                                ],
                               ),
                               child: const Row(
                                 children: [
@@ -228,7 +239,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                   padding: const EdgeInsets.symmetric(horizontal: 20),
                                   decoration: BoxDecoration(
                                     color: AppTheme.expenseRed.withValues(alpha: 0.18),
-                                    borderRadius: BorderRadius.circular(16),
+                                    borderRadius:
+                                        BorderRadius.circular(AppTheme.controlRadius),
                                     border: Border.all(
                                       color: AppTheme.expenseRed.withValues(alpha: 0.35),
                                     ),
