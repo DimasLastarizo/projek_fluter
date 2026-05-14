@@ -13,18 +13,18 @@ class AppTheme {
   static const Color signalYellow = Color(0xFFF8E946);
   static const Color terminalCyan = Color(0xFF35BEE8);
 
-  static const Color primaryNavy = voidBlack;
+  static const Color primaryNavy = charcoal;
   static const Color accentEmerald = signalYellow;
   static const Color warmCream = paperWhite;
-  static const Color cardDark = charcoal;
+  static const Color cardDark = voidBlack;
   static const Color cardMedium = gunmetal;
   static const Color expenseRed = signalYellow;
   static const Color incomeGreen = terminalCyan;
   static const Color textLight = paperWhite;
   static const Color textMuted = coolGrey;
   static const Color divider = Color(0x77838782);
-  static const Color backgroundGradientEnd = gunmetal;
-  static const Color cardGradientStart = panelGrey;
+  static const Color backgroundGradientEnd = panelGrey;
+  static const Color cardGradientStart = gunmetal;
   static const Color inputHintGhost = Color(0x55B9C1C0);
   static const Color shadow = Color(0x99000000);
 

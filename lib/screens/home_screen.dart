@@ -140,8 +140,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               boxShadow: const [
                                 BoxShadow(
                                   color: AppTheme.shadow,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 6),
+                                  blurRadius: 5,
+                                  offset: Offset(0, 3),
                                 ),
                               ],
                             ),
@@ -211,8 +211,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               boxShadow: const [
                                 BoxShadow(
                                   color: AppTheme.shadow,
-                                  blurRadius: 8,
-                                  offset: Offset(0, 5),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 2),
                                 ),
                               ],
                             ),
@@ -321,8 +321,8 @@ class _ActionButton extends StatelessWidget {
           boxShadow: const [
             BoxShadow(
               color: AppTheme.shadow,
-              blurRadius: 12,
-              offset: Offset(0, 8),
+              blurRadius: 5,
+              offset: Offset(0, 3),
             ),
           ],
         ),
@@ -332,8 +332,12 @@ class _ActionButton extends StatelessWidget {
               left: 0,
               top: 0,
               bottom: 0,
-              width: 5,
-              child: DecoratedBox(decoration: BoxDecoration(color: color)),
+              width: 3,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.65),
+                ),
+              ),
             ),
             Positioned(
               right: 10,

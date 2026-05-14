@@ -41,8 +41,8 @@ class BalanceCard extends StatelessWidget {
         boxShadow: const [
           BoxShadow(
             color: AppTheme.shadow,
-            blurRadius: 18,
-            offset: Offset(0, 10),
+            blurRadius: 7,
+            offset: Offset(0, 4),
           ),
         ],
       ),
@@ -52,8 +52,12 @@ class BalanceCard extends StatelessWidget {
             left: 0,
             top: 0,
             bottom: 0,
-            width: 5,
-            child: DecoratedBox(decoration: BoxDecoration(color: statusColor)),
+            width: 3,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: statusColor.withValues(alpha: 0.65),
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(24),

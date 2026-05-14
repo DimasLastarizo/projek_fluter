@@ -131,22 +131,22 @@ class _InputScreenState extends State<InputScreen>
                       children: [
                         Expanded(
                           child: _TypeToggle(
-                            label: 'Expense',
-                            icon: Icons.arrow_upward_rounded,
-                            isSelected: _selectedType == TransactionType.expense,
-                            activeColor: AppTheme.expenseRed,
-                            onTap: () => setState(
-                                () => _selectedType = TransactionType.expense),
-                          ),
-                        ),
-                        Expanded(
-                          child: _TypeToggle(
                             label: 'Income',
                             icon: Icons.arrow_downward_rounded,
                             isSelected: _selectedType == TransactionType.income,
                             activeColor: AppTheme.incomeGreen,
                             onTap: () => setState(
                                 () => _selectedType = TransactionType.income),
+                          ),
+                        ),
+                        Expanded(
+                          child: _TypeToggle(
+                            label: 'Expense',
+                            icon: Icons.arrow_upward_rounded,
+                            isSelected: _selectedType == TransactionType.expense,
+                            activeColor: AppTheme.expenseRed,
+                            onTap: () => setState(
+                                () => _selectedType = TransactionType.expense),
                           ),
                         ),
                       ],
