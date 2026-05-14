@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'screens/home_screen.dart';
 import 'theme/app_theme.dart';
-
+ 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+ 
+  // Set status bar style
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -14,23 +15,24 @@ void main() async {
       systemNavigationBarIconBrightness: Brightness.light,
     ),
   );
-
+ 
+  // Portrait only
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
-  runApp(const MyApp());
+ 
+  runApp(const MoneyTrackerApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MoneyTrackerApp extends StatelessWidget {
+  const MoneyTrackerApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Money Tracker',
       debugShowCheckedModeBanner: false,
+      title: 'Money Tracker',
       theme: AppTheme.theme,
       home: const HomeScreen(),
     );

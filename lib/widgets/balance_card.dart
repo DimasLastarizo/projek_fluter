@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../theme/app_theme.dart';
 
 class BalanceCard extends StatelessWidget {
-  const BalanceCard({super.key});
+  final double balance;
+  final double totalIncome;
+  final double totalExpense;
+
+  const BalanceCard({
+    super.key,
+    required this.balance,
+    required this.totalIncome,
+    required this.totalExpense,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final formatter = NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0);
+    final isPositive = balance >= 0;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
@@ -42,7 +55,7 @@ class BalanceCard extends StatelessWidget {
                         color: AppTheme.accentEmerald, size: 14),
                     SizedBox(width: 5),
                     Text(
-                      'CURRENT BALANCE',
+                      'SALDO SAAT INI',
                       style: TextStyle(
                         color: AppTheme.accentEmerald,
                         fontSize: 11,
@@ -56,33 +69,41 @@ class BalanceCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          const Text(
-            'Rp 0',
+          Text(
+            formatter.format(balance.abs()),
             style: TextStyle(
-              color: AppTheme.warmCream,
+              color: isPositive ? AppTheme.warmCream : AppTheme.expenseRed,
               fontSize: 34,
               fontWeight: FontWeight.w800,
               letterSpacing: -1.0,
             ),
           ),
+          if (!isPositive)
+            const Padding(
+              padding: EdgeInsets.only(top: 4),
+              child: Text(
+                '⚠ Saldo minus',
+                style: TextStyle(color: AppTheme.expenseRed, fontSize: 12),
+              ),
+            ),
           const SizedBox(height: 20),
           const Divider(color: AppTheme.divider, height: 1),
           const SizedBox(height: 20),
-          const Row(
+          Row(
             children: [
               Expanded(
                 child: _SummaryItem(
                   label: 'Income',
-                  amount: 'Rp 0',
+                  amount: formatter.format(totalIncome),
                   color: AppTheme.incomeGreen,
                   icon: Icons.arrow_downward_rounded,
                 ),
               ),
-              SizedBox(width: 1, height: 40),
+              Container(width: 1, height: 40, color: AppTheme.divider),
               Expanded(
                 child: _SummaryItem(
                   label: 'Expense',
-                  amount: 'Rp 0',
+                  amount: formatter.format(totalExpense),
                   color: AppTheme.expenseRed,
                   icon: Icons.arrow_upward_rounded,
                 ),
